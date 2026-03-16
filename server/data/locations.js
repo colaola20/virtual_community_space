@@ -28,3 +28,5 @@ const locations = [
     "description": "A vibrant commercial and entertainment hub known for its bright billboards, theaters, and crowds."
   }
 ]
+
+export default locations

@@ -34,6 +34,10 @@ if (process.env.NODE_ENV === 'production') {
     )
 }
 
+app.get('/', (req, res) => {
+    res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">Server\'s root Page</h1>')
+})
+
 app.listen(PORT, () => {
     console.log(`server listening on http://localhost:${PORT}`)
 })

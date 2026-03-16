@@ -1,4 +1,4 @@
-[
+const eventsData = [
   {
     "id": 1,
     "name": "Summer Jazz Concert",
@@ -117,3 +117,5 @@
     "shortDescription": "Celebrate the New Year with music, lights, and the iconic midnight countdown."
   }
 ]
+
+export default eventsData

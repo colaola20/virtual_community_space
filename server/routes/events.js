@@ -3,6 +3,6 @@ import eventsController from '../controllers/events.js'
 
 const router = express.Router()
 
-router.get('/events', eventsController.getEvents)
+router.get('/', eventsController.getEvents)
 
 export default router

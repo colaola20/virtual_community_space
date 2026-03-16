@@ -5,7 +5,7 @@ import eventsData from '../data/events.js'
 
 const createLocationsTable = async () => {
     const creatLocationTableQuery = `
-        DROP TABLE IF EXIST locations;
+        DROP TABLE IF EXISTS locations;
 
         CREATE TABLE IF NOT EXISTS locations (
             id SERIAL PRIMARY KEY,
@@ -65,7 +65,7 @@ const createEventsTable = async () => {
     `
 
     try {
-        const res = await pool.query(createEventsTable)
+        const res = await pool.query(createEventsTableQuery)
         console.log('🎉 events table created successfully')
     } catch (err) {
         console.error('⚠️ error creating events table', err)
