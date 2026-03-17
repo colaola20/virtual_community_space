@@ -12,6 +12,7 @@ const Locations = () => {
         (async () => {
             try {
                 const locationsData = await LocationsAPI.getAllLocations()
+                console.log(locationsData)
                 setLocations(locationsData)
 
                 setVenueNames({venue1: locationsData[0].name, venue2: locationsData[1].name, venue3: locationsData[2].name, venue4: locationsData[3].name})

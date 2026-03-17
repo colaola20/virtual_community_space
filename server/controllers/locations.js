@@ -5,7 +5,6 @@ const getLocations = async (req, res) => {
         const result = await pool.query('SELECT * FROM locations ORDER BY id ASC')
         res.status(200).json(result.rows)
     } catch (error) {
-        console.log("ERRRRRRROOOOOOR")
         console.error('getLocations error:', error)
         res.status(409).json({error: error.message})
     }
