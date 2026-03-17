@@ -37,7 +37,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+https://github.com/user-attachments/assets/69da3243-5cc3-450e-8f4f-a9f36a1106b2
+
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  GIF tool here
