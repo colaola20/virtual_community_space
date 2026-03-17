@@ -30,6 +30,7 @@ else if (process.env.NODE_ENV === 'production') {
 app.use('/api/locations', locationsRouter)
 app.use('/api/events', eventsRouter)
 
+
 if (process.env.NODE_ENV === 'production') {
     app.get('/*', (_, res) =>
         res.sendFile(path.resolve('public', 'index.html'))

@@ -4,8 +4,13 @@ const getAllEvents = async () => {
     return data
 }
 
-const getEventById = async () => {
-    
+const getEventById = async (id) => {
+    const response = await fetch (`/api/events/${id}`)
+    const data = await response.json()
+    return data
 }
 
-export default getAllEvents
+export default {
+    getAllEvents,
+    getEventById
+}

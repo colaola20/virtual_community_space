@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import '../css/Event.css'
+import EventsAPI from '../services/EventsAPI'
+import dates from '../utils/dates'
 
 const Event = (props) => {
 
     const [event, setEvent] = useState([])
-    const [time, setTime] = useState([])
-    const [remaining, setRemaining] = useState([])
+    const [time, setTime] = useState('')
+    const [remaining, setRemaining] = useState('')
 
     useEffect(() => {
         (async () => {
             try {
-                const eventData = await EventsAPI.getEventsById(props.id)
+                const eventData = await EventsAPI.getEventById(props.id)
+                console.log(eventData)
                 setEvent(eventData)
             }
             catch (error) {
@@ -20,33 +23,20 @@ const Event = (props) => {
     }, [])
 
     useEffect(() => {
-        (async () => {
-            try {
-                const result = await dates.formatTime(event.time)
-                setTime(result)
-            }
-            catch (error) {
-                throw error
-            }
-        }) ()
+        if (!event.time) return
+        setTime(dates.formatTime(event.time))
     }, [event])
 
     useEffect(() => {
-        (async () => {
-            try {
-                const timeRemaining = await dates.formatRemainingTime(event.remaining)
-                setRemaining(timeRemaining)
-                dates.formatNegativeTimeRemaining(remaining, event.id)
-            }
-            catch (error) {
-                throw error
-            }
-        }) ()
+        if (!event.date || !event.time) return
+        const timeRemaining = dates.formatRemainingTime(event.date, event.time)
+        setRemaining(timeRemaining)
+        dates.formatNegativeTimeRemaining(timeRemaining, event.id)
     }, [event])
 
     return (
         <article className='event-information'>
-            <img src={event.image} />
+            <img src={event.imageurl} />
 
             <div className='event-information-overlay'>
                 <div className='text'>
