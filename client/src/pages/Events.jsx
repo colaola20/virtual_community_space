@@ -17,15 +17,22 @@ const Events = () => {
     }, [])
 
     return (
-        <div className='events-conntainer'>
-            {events && events.length > 0 ?
-                events.map((event, index) => (
-                    <Event
-                        id = {event.id}
-                    />
-                )) : <h3>No Events Yet!</h3>
-            
-            }
+        <div className='events'>
+            <main>
+                {events && events.length > 0 ?
+                    events.map((event, index) => (
+                        <Event
+                            key={event.id}
+                            id={event.id}
+                            title={event.name}
+                            date={event.date}
+                            time={event.time}
+                            image={event.imageurl}
+                        />
+                    )) : <h3>No Events Yet!</h3>
+                
+                }
+            </main>
         </div>
     )
 }

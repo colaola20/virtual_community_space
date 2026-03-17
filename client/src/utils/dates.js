@@ -1,5 +1,12 @@
 const dates = {
-    // Formats "19:00" → "7:00 PM"
+    // Formats "2026-07-15T00:00:00.000Z" or "2026-07-15" → "July 15, 2026"
+    formatDate(dateStr) {
+        if (!dateStr) return ''
+        const date = new Date(dateStr.slice(0, 10) + 'T12:00:00')
+        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    },
+
+    // Formats "19:00" or "19:00:00" → "7:00 PM"
     formatTime(timeStr) {
         if (!timeStr) return ''
         const [hours, minutes] = timeStr.split(':').map(Number)
@@ -11,7 +18,9 @@ const dates = {
     // Returns a human-readable string like "47 days, 3 hours, 22 minutes"
     // or "Event has passed" if the event date/time is in the past
     formatRemainingTime(dateStr, timeStr) {
-        const eventDate = new Date(`${dateStr}T${timeStr}:00`)
+        const dateOnly = dateStr.slice(0, 10)
+        const timeOnly = timeStr.slice(0, 5)
+        const eventDate = new Date(`${dateOnly}T${timeOnly}:00`)
         const ms = eventDate - Date.now()
         if (ms <= 0) return 'Event has passed'
 
